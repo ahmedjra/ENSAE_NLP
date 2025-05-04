@@ -27,7 +27,7 @@ This project implements and evaluates several approaches to nested named entity 
 2. **Prompt-based Methods**:
    - Base prompting
    - Recursive prompting
-   - Extraction-classification
+   - Extraction-classification(Same as Base prompting)
    - Flat QA
    - Nested QA
    - Structure QA
