@@ -1,4 +1,4 @@
-# BERT-based Named Entity Recognition for Biomedical Text
+# BERT-based Named Entity Recognition for Biomedical 
 
 This repository contains implementations for nested NER on the GENIA biomedical dataset using BERT-based models and prompt-based methods.
 
