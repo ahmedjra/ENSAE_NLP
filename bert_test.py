@@ -233,6 +233,39 @@ for name, model_id in MODELS.items():
         # Structure QA: return all spans with structure preserved
         spans = extract_spans_with_model(tokens, tokenizer, model)
         return spans
+
+    def decomposed_qa_method(tokens, tokenizer, model):
+        # Decomposed QA: one extract-and-classify pass per entity type
+        all_spans = []
+        entity_types = label_list[1:]  # Skip 'O'
+        
+        for entity_type in entity_types:
+            # Extract spans for this entity type
+            type_spans = []
+            for i in range(len(tokens)):
+                for j in range(i+1, min(len(tokens)+1, i+MAX_SPAN_LEN+1)):
+                    text = " ".join(tokens[i:j])
+                    inputs = tokenizer(text, return_tensors='pt', truncation=True, max_length=MAX_SPAN_LEN)
+                    outputs = model(**inputs)
+                    logits = outputs.logits.squeeze()
+                    
+                    # Get the score for this entity type
+                    entity_idx = label_list.index(entity_type)
+                    scores = torch.softmax(logits, dim=0)
+                    entity_score = scores[entity_idx].item()
+                    
+                    # If score is high enough, add to spans
+                    if entity_score > 0.5:  # Threshold
+                        type_spans.append({
+                            'start': i,
+                            'end': j,
+                            'type': entity_type
+                        })
+            
+            # Add spans for this entity type to all spans
+            all_spans.extend(type_spans)
+        
+        return all_spans
     
     # Define all prompt methods to evaluate
     prompt_methods = {
@@ -241,7 +274,8 @@ for name, model_id in MODELS.items():
         'extraction_classification': extraction_classification_method,
         'flat_qa': flat_qa_method,
         'nested_qa': nested_qa_method,
-        'structure_qa': structure_qa_method
+        'structure_qa': structure_qa_method,
+        'decomposed_qa': decomposed_qa_method
     }
     
     # Evaluate all prompt methods for this model
