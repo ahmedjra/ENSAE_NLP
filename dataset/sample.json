@@ -1,0 +1,67 @@
+[
+  {
+    "tokens": ["The", "IL-2", "gene", "expression", "was", "studied", "in", "human", "T", "cells", "."],
+    "entities": [
+      {
+        "start": 1,
+        "end": 2,
+        "type": "protein"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "type": "DNA"
+      },
+      {
+        "start": 8,
+        "end": 10,
+        "type": "cell_type"
+      }
+    ]
+  },
+  {
+    "tokens": ["We", "analyzed", "the", "human", "IL-4", "and", "IL-13", "genes", "in", "Jurkat", "cells", "."],
+    "entities": [
+      {
+        "start": 4,
+        "end": 5,
+        "type": "protein"
+      },
+      {
+        "start": 6,
+        "end": 7,
+        "type": "protein"
+      },
+      {
+        "start": 3,
+        "end": 8,
+        "type": "DNA"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "type": "cell_line"
+      }
+    ]
+  },
+  {
+    "tokens": ["The", "transcription", "factor", "NF-kappa", "B", "regulates", "IL-2R", "alpha", "chain", "gene", "."],
+    "entities": [
+      {
+        "start": 3,
+        "end": 5,
+        "type": "protein"
+      },
+      {
+        "start": 6,
+        "end": 10,
+        "type": "DNA"
+      },
+      {
+        "start": 6,
+        "end": 9,
+        "type": "protein"
+      }
+    ]
+  }
+]
