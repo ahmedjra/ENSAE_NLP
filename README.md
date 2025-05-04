@@ -1,4 +1,4 @@
-# BERT-based Named Entity Recognition for Biomedical 
+# Nested Named Entity Recognition on GENIA with Biomedical BERT Models: Span Classification and Masking Heuristics
 
 This repository contains implementations for nested NER on the GENIA biomedical dataset using BERT-based models and prompt-based methods.
 
