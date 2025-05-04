@@ -59,7 +59,7 @@ To analyze the GENIA dataset and generate visualizations:
 use the Jupyter notebook for interactive analysis:
 
 ```bash
-jupyter notebook notebooks/dataset_analysis.ipynb
+jupyter dataset_analysis.ipynb
 ```
 
 ### BERT NER Pipeline
@@ -76,7 +76,7 @@ python bert_test.py
 To analyze the results:
 
 ```bash
-jupyter notebook notebooks/span_bert_analysis.ipynb
+jupyter span_bert_analysis.ipynb
 ```
 
 ## Evaluation Metrics
